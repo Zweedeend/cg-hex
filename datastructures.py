@@ -56,7 +56,7 @@ class Cube:
     def __mul__(self, other: int):
         assert isinstance(other, int)
         assert isinstance(self, Cube)
-        return Cube(*(crd * int for crd in self))
+        return Cube(*(crd * other for crd in self))
 
     def __len__(self):
         return 3
@@ -136,6 +136,9 @@ class Hex:
 
     def __sub__(self, other):
         return Hex(Cube(self) - Cube(other))
+
+    def __mul__(self, other:int):
+        return Hex(Cube(self) * other)
 
     def euclidean(self, other):
         return Cube(self).euclidean(other)
